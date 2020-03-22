@@ -19,13 +19,14 @@ export default {
 </script>
 
 <style>
+  @import url('https://fonts.googleapis.com/css?family=Raleway:300,400&display=swap');
   html{
     height: 100%;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    background-color: #f5f6fa;
   }
   body{
     height: 100%;
-    background-color: #f5f6fa;
   }
 </style>

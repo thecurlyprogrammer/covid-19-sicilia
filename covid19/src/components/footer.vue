@@ -42,31 +42,37 @@
       justify-content: center;
       // background-color: red;
       padding: 16px 0px;
-    }
-    .socialContainer{
-      font-weight: 100;
-      text-align: center;
-      // background-color: blue;
-      .socialGroup{
-        // background-color: red;
-        margin-top: 16px;
-        .socialIcon{
-          color: white;
-          margin-left: 8px;
-          margin-right: 8px;
-          :hover{
-            color: aqua;
+      .socialContainer{
+        font-weight: 100;
+        text-align: center;
+        .contactTitle{
+          font-family: 'Raleway', sans-serif;
+          font-weight: 300;
+        }
+        // background-color: blue;
+        .socialGroup{
+          // background-color: red;
+          margin-top: 16px;
+          .socialIcon{
+            color: white;
+            margin-left: 8px;
+            margin-right: 8px;
+            :hover{
+              color: aqua;
+            }
           }
         }
       }
     }
+
     .bottomContainer{
       // background-color: blue;
       display: flex;
       justify-content: center;
       padding: 16px 0px;
       .bottom{
-        font-weight: 100;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 300;
       }
     }
   }

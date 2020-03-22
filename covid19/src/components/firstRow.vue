@@ -71,6 +71,7 @@ export default {
       .title{
         font-size: 1.2em;
         text-align: center;
+        font-family: 'Raleway', sans-serif;
       }
       .value{
         font-size: 3em;

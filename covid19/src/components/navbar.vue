@@ -1,13 +1,14 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top">
-      <b-navbar-brand href="#">COVID-19 Sicilia</b-navbar-brand>
+      <b-navbar-brand href="/">COVID-19 Sicilia</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item href="#bollettino">Bollettino</b-nav-item>
+          <b-nav-item href="#province">Dati province</b-nav-item>
           <b-nav-item href="#cosaFare">Cosa fare</b-nav-item>
           <b-nav-item href="#contatti">A chi rivolgersi</b-nav-item>
         </b-navbar-nav>

@@ -19,9 +19,12 @@
         :totaleCasi = "sicilia.totaleCasi"
         :tamponi = "sicilia.tamponi"
       />
+      <province
+        :province = "provinceTotale"
+      />
       <hr>
       <div class="vamedecumContainer" id="cosaFare">
-        <div class="vamedecum">COSA FARE IN CASO DI DUBBI?</div>
+        <div class="vamedecum">Cosa fare in caso di dubbi?</div>
         <b-list-group>
           <b-list-group-item v-for="regola in regole" v-bind:key="regola.key">
             {{ regola }}
@@ -52,6 +55,7 @@
 import axios from 'axios';
 import firstRow from '@/components/firstRow.vue';
 import secondRow from '@/components/secondRow.vue';
+import province from '@/components/province.vue';
 
 export default {
   name: 'Home',
@@ -71,6 +75,7 @@ export default {
         totaleCasi: '0',
         tamponi: '0',
       },
+      provinceTotale: [],
       regole: {
         1: '1. Quali sono i sintomi a cui devo fare attenzione? Febbre e sintomi simil-influenzali come tosse, mal di gola, respiro corto, dolore ai muscoli, stanchezza sono segnali di una possibile infezione da nuovo coronavirus.',
         2: '2. Ho febbre e/o sintomi influenzali, cosa devo fare? Resta in casa e chiama il medico di famiglia, il pediatra o la guardia medica.',
@@ -99,6 +104,7 @@ export default {
   components: {
     firstRow,
     secondRow,
+    province,
   },
   methods: {
     getRegione() {
@@ -123,37 +129,92 @@ export default {
           console.error(error);
         });
     },
+    getProvince() {
+      const path = 'https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province-latest.json';
+      axios.get(path)
+        .then((res) => {
+          const result = res.data;
+          const lunghezza = result.length;
+          let i = 0;
+          while (i < lunghezza) {
+            if (result[i].codice_regione === 19) {
+              this.provinceTotale.push(result[i]);
+              // console.log(this.provinceTotale);
+            }
+            i += 1;
+          }
+          // console.log(this.provinceTotale);
+        })
+        .catch((error) => {
+          // eslint-disable-next-line
+          console.error(error);
+        });
+    },
   },
   created() {
     this.getRegione();
+    this.getProvince();
   },
 };
 </script>
 
 <style lang="scss" scoped>
-  .main{
+  #bollettino{
     margin-top: 100px;
+  }
+  .main{
+    background-color: #f5f6fa;
+    .widgetContainer{
+      // background-color: blue;
+      padding: 16px;
+      .iconContainer{
+        width: 100%;
+        // background-color: green;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 16px;
+      }
+      .icons{
+        // background-color: red;
+        width: auto;
+        height: 80px;
+      }
+      .title{
+        font-size: 1.2em;
+        text-align: center;
+      }
+      .value{
+        font-size: 3em;
+        text-align: center;
+      }
+    }
     .head{
       // background-color: aqua;
       padding: 16px;
       .title{
         font-size: 3em;
         text-align: center;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 300;
       }
       .data{
         font-size: 1.3em;
         text-align: center;
+        font-family: 'Raleway', sans-serif;
       }
     }
     .vamedecumContainer{
       .vamedecum{
         font-size: 2.5em;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 300;
         text-align: center;
         padding: 16px 0px;
       }
       .credits{
         margin-top: 16px;
         text-align: center;
+        font-family: 'Raleway', sans-serif;
       }
     }
     .rivolgersiContainer{
@@ -161,6 +222,8 @@ export default {
       .rivolgersi{
         font-size: 2.5em;
         text-align: center;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 300;
         padding: 16px 0px;
       }
     }

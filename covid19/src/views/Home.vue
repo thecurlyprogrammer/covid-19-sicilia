@@ -138,8 +138,10 @@ export default {
           let i = 0;
           while (i < lunghezza) {
             if (result[i].codice_regione === 19) {
-              this.provinceTotale.push(result[i]);
-              // console.log(this.provinceTotale);
+              if (result[i].denominazione_provincia !== 'In fase di definizione/aggiornamento') {
+                this.provinceTotale.push(result[i]);
+                // console.log(this.provinceTotale);
+              }
             }
             i += 1;
           }

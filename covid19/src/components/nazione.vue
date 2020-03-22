@@ -1,43 +1,52 @@
 <template>
-  <div>
+  <div class="main" id="nazione">
     <hr>
     <div class="titleContainer">
-      <div class="title">Dati per Regione</div>
+      <div class="title">Dati per la nazione Italiana</div>
     </div>
     <b-row>
       <b-col class="widgetContainer" lg="3" md="6" sm="6" cols="6">
-        <div class="iconContainer">
-          <img class="icons" src="../assets/icons/01.svg"
-          alt="Icona che raffigura una persona che tossisce">
-        </div>
+        <div class="title">Totale Positivi</div>
+        <div class="value">{{ totalePositivi }}</div>
+      </b-col>
+      <b-col class="widgetContainer" lg="3" md="6" sm="6" cols="6">
+        <div class="title">Nuovi Attualmente Positivi</div>
+        <div class="value">+{{ nuoviPositivi }}</div>
+      </b-col>
+      <b-col class="widgetContainer" lg="3" md="6" sm="6" cols="6">
+        <div class="title">Totale Pazienti Dimessi</div>
+        <div class="value">{{ dimessi }}</div>
+      </b-col>
+      <b-col class="widgetContainer" lg="3" md="6" sm="6" cols="6">
+        <div class="title">Totale Pazienti Deceduti</div>
+        <div class="value">{{ deceduti }}</div>
+      </b-col>
+      <b-col class="widgetContainer" lg="3" md="6" sm="6" cols="6">
+        <div class="title">Casi Totali</div>
+        <div class="value">{{ totaleCasi }}</div>
+      </b-col>
+      <b-col class="widgetContainer" lg="3" md="6" sm="6" cols="6">
+        <div class="title">Tamponi Effettuati</div>
+        <div class="value">{{ tamponi }}</div>
+      </b-col>
+      <b-col class="widgetContainer" lg="3" md="6" sm="6" cols="6">
         <div class="title">Ricoverati con Sintomi</div>
         <div class="value">{{ ricoverati }}</div>
       </b-col>
       <b-col class="widgetContainer" lg="3" md="6" sm="6" cols="6">
-        <div class="iconContainer">
-          <img class="icons" src="../assets/icons/02.svg"
-          alt="Icona che raffigura dei polmoni">
-        </div>
         <div class="title">Terapia Intensiva</div>
         <div class="value">{{ terapia }}</div>
       </b-col>
       <b-col class="widgetContainer" lg="3" md="6" sm="6" cols="6">
-        <div class="iconContainer">
-          <img class="icons" src="../assets/icons/03.svg"
-          alt="Icona che raffigura un ospedale">
-        </div>
         <div class="title">Totale Ospedalizzati</div>
         <div class="value">{{ ospedalizzati }}</div>
       </b-col>
       <b-col class="widgetContainer" lg="3" md="6" sm="6" cols="6">
-        <div class="iconContainer">
-          <img class="icons" src="../assets/icons/04.svg"
-          alt="Icona che raffigura un paziente con una mascherina">
-        </div>
         <div class="title">Isolamento Domiciliare</div>
         <div class="value">{{ isolamento }}</div>
       </b-col>
     </b-row>
+    <div class="credits">Fonte dati: <b-link href="https://github.com/ondata/covid19italia" target="blank">covid19italia</b-link>, <b-link href="https://github.com/pcm-dpc/COVID-19" target="blank">Protezione Civile</b-link></div>
   </div>
 </template>
 
@@ -45,7 +54,7 @@
 
 export default {
   name: 'Home',
-  props: ['ricoverati', 'terapia', 'ospedalizzati', 'isolamento'],
+  props: ['totalePositivi', 'nuoviPositivi', 'dimessi', 'deceduti', 'totaleCasi', 'tamponi', 'ricoverati', 'terapia', 'ospedalizzati', 'isolamento'],
   data() {
     return {
     };
@@ -82,17 +91,21 @@ export default {
       .icons{
         // background-color: red;
         width: auto;
-        height: 120px;
+        height: 40px;
       }
       .title{
-        font-size: 1.2em;
+        font-size: 1em;
         text-align: center;
         font-family: 'Raleway', sans-serif;
       }
       .value{
-        font-size: 3em;
+        font-size: 2em;
         text-align: center;
       }
+    }
+    .credits{
+      text-align: center;
+      font-family: 'Raleway', sans-serif;
     }
   }
 </style>

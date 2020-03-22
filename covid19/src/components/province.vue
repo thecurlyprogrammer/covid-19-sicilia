@@ -16,7 +16,6 @@
         <div class="value">{{ provincia.totale_casi || '0' }}</div>
       </b-col>
     </b-row>
-    <div class="credits">Fonte dati: <b-link href="https://github.com/ondata/covid19italia" target="blank">covid19italia</b-link>, <b-link href="https://github.com/pcm-dpc/COVID-19" target="blank">Protezione Civile</b-link></div>
   </div>
 </template>
 

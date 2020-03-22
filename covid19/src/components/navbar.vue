@@ -9,6 +9,7 @@
         <b-navbar-nav>
           <b-nav-item href="#bollettino">Bollettino</b-nav-item>
           <b-nav-item href="#province">Dati province</b-nav-item>
+          <b-nav-item href="#nazione">Dati nazione</b-nav-item>
           <b-nav-item href="#cosaFare">Cosa fare</b-nav-item>
           <b-nav-item href="#contatti">A chi rivolgersi</b-nav-item>
         </b-navbar-nav>

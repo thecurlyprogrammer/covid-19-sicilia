@@ -22,6 +22,18 @@
       <province
         :province = "provinceTotale"
       />
+      <nazione
+        :ricoverati = "nazione.ricoveratiSintomi"
+        :terapia = "nazione.terapiaIntensiva"
+        :ospedalizzati = "nazione.totaleOspedalizzati"
+        :isolamento = "nazione.isolamentoDomiciliare"
+        :totalePositivi = "nazione.totalePositivi"
+        :nuoviPositivi = "nazione.nuoviPositivi"
+        :dimessi = "nazione.dimessiGuariti"
+        :deceduti = "nazione.deceduti"
+        :totaleCasi = "nazione.totaleCasi"
+        :tamponi = "nazione.tamponi"
+      />
       <hr>
       <div class="vamedecumContainer" id="cosaFare">
         <div class="vamedecum">Cosa fare in caso di dubbi?</div>
@@ -56,6 +68,7 @@ import axios from 'axios';
 import firstRow from '@/components/firstRow.vue';
 import secondRow from '@/components/secondRow.vue';
 import province from '@/components/province.vue';
+import nazione from '@/components/nazione.vue';
 
 export default {
   name: 'Home',
@@ -64,6 +77,19 @@ export default {
       sicilia: {
         regione: 'Sicilia',
         data: '2020-00-00',
+        ricoveratiSintomi: '0',
+        terapiaIntensiva: '0',
+        totaleOspedalizzati: '0',
+        isolamentoDomiciliare: '0',
+        totalePositivi: '0',
+        nuoviPositivi: '0',
+        dimessiGuariti: '0',
+        deceduti: '0',
+        totaleCasi: '0',
+        tamponi: '0',
+      },
+      nazione: {
+        stato: 'Italia',
         ricoveratiSintomi: '0',
         terapiaIntensiva: '0',
         totaleOspedalizzati: '0',
@@ -105,6 +131,7 @@ export default {
     firstRow,
     secondRow,
     province,
+    nazione,
   },
   methods: {
     getRegione() {
@@ -152,10 +179,33 @@ export default {
           console.error(error);
         });
     },
+    getNazione() {
+      const path = 'https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale-latest.json';
+      axios.get(path)
+        .then((res) => {
+          this.nazione.stato = res.data[0].stato;
+          this.nazione.ricoveratiSintomi = res.data[0].ricoverati_con_sintomi;
+          this.nazione.terapiaIntensiva = res.data[0].terapia_intensiva;
+          this.nazione.totaleOspedalizzati = res.data[0].totale_ospedalizzati;
+          this.nazione.isolamentoDomiciliare = res.data[0].isolamento_domiciliare;
+          this.nazione.totalePositivi = res.data[0].totale_attualmente_positivi;
+          this.nazione.nuoviPositivi = res.data[0].nuovi_attualmente_positivi;
+          this.nazione.dimessiGuariti = res.data[0].dimessi_guariti;
+          this.nazione.deceduti = res.data[0].deceduti;
+          this.nazione.totaleCasi = res.data[0].totale_casi;
+          this.nazione.tamponi = res.data[0].tamponi;
+          // console.log(this.nazione);
+        })
+        .catch((error) => {
+          // eslint-disable-next-line
+          console.error(error);
+        });
+    },
   },
   created() {
     this.getRegione();
     this.getProvince();
+    this.getNazione();
   },
 };
 </script>

@@ -135,21 +135,29 @@ export default {
   },
   methods: {
     getRegione() {
-      const path = 'https://openpuglia.org/api/?q=getdatapccovid-19&reg=sicilia';
+      const path = 'https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-regioni-latest.json';
       axios.get(path)
         .then((res) => {
-          this.sicilia.regione = res.data[0].regione;
-          this.sicilia.data = res.data[0].data;
-          this.sicilia.ricoveratiSintomi = res.data[0]['ricoverati con sintomi'];
-          this.sicilia.terapiaIntensiva = res.data[0]['terapia intensiva'];
-          this.sicilia.totaleOspedalizzati = res.data[0]['totale ospedalizzati'];
-          this.sicilia.isolamentoDomiciliare = res.data[0]['isolamento domiciliare'];
-          this.sicilia.totalePositivi = res.data[0]['totale attualmente positivi'];
-          this.sicilia.nuoviPositivi = res.data[0]['nuovi attualmente positivi'];
-          this.sicilia.dimessiGuariti = res.data[0]['dimessi guariti'];
-          this.sicilia.deceduti = res.data[0].deceduti;
-          this.sicilia.totaleCasi = res.data[0]['totale casi'];
-          this.sicilia.tamponi = res.data[0].tamponi;
+          const result = res.data;
+          const lunghezza = result.length;
+          let i = 0;
+          while (i < lunghezza) {
+            if (result[i].codice_regione === 19) {
+              this.sicilia.regione = res.data[i].denominazione_regione;
+              this.sicilia.data = res.data[i].data;
+              this.sicilia.ricoveratiSintomi = res.data[i].ricoverati_con_sintomi;
+              this.sicilia.terapiaIntensiva = res.data[i].terapia_intensiva;
+              this.sicilia.totaleOspedalizzati = res.data[i].totale_ospedalizzati;
+              this.sicilia.isolamentoDomiciliare = res.data[i].isolamento_domiciliare;
+              this.sicilia.totalePositivi = res.data[i].totale_attualmente_positivi;
+              this.sicilia.nuoviPositivi = res.data[i].nuovi_attualmente_positivi;
+              this.sicilia.dimessiGuariti = res.data[i].dimessi_guariti;
+              this.sicilia.deceduti = res.data[i].deceduti;
+              this.sicilia.totaleCasi = res.data[i].totale_casi;
+              this.sicilia.tamponi = res.data[i].tamponi;
+            }
+            i += 1;
+          }
         })
         .catch((error) => {
           // eslint-disable-next-line

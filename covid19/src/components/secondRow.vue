@@ -8,6 +8,9 @@
           alt="Icona che raffigura lo stato di pandemia">
         </div>
         <div class="title">Totale Positivi</div>
+        <div class="descr">
+          Ospedalizzati + isolamento domiciliare
+        </div>
         <div class="value">{{ totalePositivi }}</div>
       </b-col>
       <b-col class="widgetContainer" lg="4" md="6" sm="6" cols="6">
@@ -85,6 +88,11 @@ export default {
       }
       .title{
         font-size: 1.2em;
+        text-align: center;
+        font-family: 'Raleway', sans-serif;
+      }
+      .descr{
+        font-size: 0.8em;
         text-align: center;
         font-family: 'Raleway', sans-serif;
       }

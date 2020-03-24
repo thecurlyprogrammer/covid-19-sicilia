@@ -35,10 +35,6 @@
         :tamponi = "nazione.tamponi"
       />
       <hr>
-      <b-row class="amazon">
-        <iframe src="https://rcm-eu.amazon-adsystem.com/e/cm?o=29&p=13&l=ur1&category=amu&banner=0Y59GJHNAWRPWXVM5SR2&f=ifr&linkID=491b8e35c9d3d4c4913ce8f958de9b3b&t=sandrogreco0a-21&tracking_id=sandrogreco0a-21" width="468" height="60" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
-      </b-row>
-      <hr>
       <div class="vamedecumContainer" id="cosaFare">
         <div class="vamedecum">Cosa fare in caso di dubbi?</div>
         <b-list-group>
@@ -63,9 +59,6 @@
           </b-list-group-item>
         </b-list-group>
       </div>
-      <b-row class="amazon">
-        <iframe src="https://rcm-eu.amazon-adsystem.com/e/cm?o=29&p=22&l=ur1&category=prime&banner=04NK6M6RAGQ5Q3BQ0282&f=ifr&linkID=e6b910429505fb4dde31e6f47d79afdd&t=sandrogreco0a-21&tracking_id=sandrogreco0a-21" width="250" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
-      </b-row>
     </b-container>
   </div>
 </template>

@@ -16,8 +16,6 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item href="http://covid19.sandrogreco.com/modello/autodichiarazione.pdf"
-          target="_blank" download>Modello Autodichiarazione</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>

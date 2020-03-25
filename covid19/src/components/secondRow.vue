@@ -2,7 +2,7 @@
   <div class="main">
     <hr>
     <b-row>
-      <b-col class="widgetContainer" lg="4" md="6" sm="6" cols="6">
+      <b-col class="widgetContainer" lg="4" md="4" sm="6" cols="6">
         <div class="iconContainer">
           <img class="icons" src="../assets/icons/05.svg"
           alt="Icona che raffigura lo stato di pandemia">
@@ -13,7 +13,7 @@
         </div>
         <div class="value">{{ totalePositivi }}</div>
       </b-col>
-      <b-col class="widgetContainer" lg="4" md="6" sm="6" cols="6">
+      <b-col class="widgetContainer" lg="4" md="4" sm="6" cols="6">
         <div class="iconContainer">
           <img class="icons" src="../assets/icons/06.svg"
           alt="Icona che raffigura un virus">
@@ -21,7 +21,7 @@
         <div class="title">Nuovi Attualmente Positivi</div>
         <div class="value">+{{ nuoviPositivi }}</div>
       </b-col>
-      <b-col class="widgetContainer" lg="4" md="6" sm="6" cols="6">
+      <b-col class="widgetContainer" lg="4" md="4" sm="6" cols="6">
         <div class="iconContainer">
           <img class="icons" src="../assets/icons/07.svg"
           alt="Icona che raffigura una cartella con una spunta verde">
@@ -29,7 +29,7 @@
         <div class="title">Totale Pazienti Dimessi</div>
         <div class="value">{{ dimessi }}</div>
       </b-col>
-      <b-col class="widgetContainer" lg="4" md="6" sm="6" cols="6">
+      <b-col class="widgetContainer" lg="4" md="4" sm="6" cols="6">
         <div class="iconContainer">
           <img class="icons" src="../assets/icons/10.svg"
           alt="Icona che raffigura un cardiografo">
@@ -37,7 +37,7 @@
         <div class="title">Totale Pazienti Deceduti</div>
         <div class="value">{{ deceduti }}</div>
       </b-col>
-      <b-col class="widgetContainer" lg="4" md="6" sm="6" cols="6">
+      <b-col class="widgetContainer" lg="4" md="4" sm="6" cols="6">
         <div class="iconContainer">
           <img class="icons" src="../assets/icons/08.svg"
           alt="Icona che raffigura una cartella">
@@ -45,7 +45,7 @@
         <div class="title">Casi Totali</div>
         <div class="value">{{ totaleCasi }}</div>
       </b-col>
-      <b-col class="widgetContainer" lg="4" md="6" sm="6" cols="6">
+      <b-col class="widgetContainer" lg="4" md="4" sm="6" cols="6">
         <div class="iconContainer">
           <img class="icons" src="../assets/icons/09.svg"
           alt="Icona che raffigura un microscopio">
@@ -87,7 +87,7 @@ export default {
         height: 80px;
       }
       .title{
-        font-size: 1.2em;
+        font-size: 1em;
         text-align: center;
         font-family: 'Raleway', sans-serif;
       }
@@ -97,7 +97,7 @@ export default {
         font-family: 'Raleway', sans-serif;
       }
       .value{
-        font-size: 3em;
+        font-size: 2em;
         text-align: center;
       }
     }

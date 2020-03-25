@@ -22,6 +22,11 @@
       <province
         :province = "provinceTotale"
       />
+      <div class="amazon">
+        <div class="amazonProduct">
+          <iframe src="https://rcm-eu.amazon-adsystem.com/e/cm?o=29&p=42&l=ur1&category=primestudent_it&banner=1RJANB9APZJXG4CVF502&f=ifr&linkID=20896c5c5f2b563627801169d39f70be&t=sandrogreco0a-21&tracking_id=sandrogreco0a-21" width="234" height="60" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+        </div>
+      </div>
       <nazione
         :ricoverati = "nazione.ricoveratiSintomi"
         :terapia = "nazione.terapiaIntensiva"
@@ -59,6 +64,11 @@
           </b-list-group-item>
         </b-list-group>
       </div>
+      <div class="amazon">
+        <div class="amazonProduct">
+          <iframe src="https://rcm-eu.amazon-adsystem.com/e/cm?o=29&p=22&l=ur1&category=amu&banner=0JH87N0A0VRN7NCWZVR2&f=ifr&linkID=68f69324d3743e678a1d8b6c8991252c&t=sandrogreco0a-21&tracking_id=sandrogreco0a-21" width="250" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+        </div>
+      </div>
     </b-container>
   </div>
 </template>
@@ -76,7 +86,7 @@ export default {
     return {
       sicilia: {
         regione: 'Sicilia',
-        data: '2020-00-00',
+        data: '00-00-2020',
         ricoveratiSintomi: '0',
         terapiaIntensiva: '0',
         totaleOspedalizzati: '0',
@@ -134,6 +144,16 @@ export default {
     nazione,
   },
   methods: {
+    convertData(oldData) {
+      let array = [];
+      array = oldData.split('-');
+      // Prendo il terzo elemento per eliminare l'ora
+      const third = array[2];
+      // Prendo il primo elemento scartando l'ora
+      const giorno = third.split('T');
+      const newDate = giorno[0].concat('-', array[1], '-', array[0]);
+      return newDate;
+    },
     getRegione() {
       const path = 'https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-regioni-latest.json';
       axios.get(path)
@@ -143,8 +163,10 @@ export default {
           let i = 0;
           while (i < lunghezza) {
             if (result[i].codice_regione === 19) {
+              const oldData = res.data[i].data;
+              const newDate = this.convertData(oldData);
               this.sicilia.regione = res.data[i].denominazione_regione;
-              this.sicilia.data = res.data[i].data;
+              this.sicilia.data = newDate;
               this.sicilia.ricoveratiSintomi = res.data[i].ricoverati_con_sintomi;
               this.sicilia.terapiaIntensiva = res.data[i].terapia_intensiva;
               this.sicilia.totaleOspedalizzati = res.data[i].totale_ospedalizzati;

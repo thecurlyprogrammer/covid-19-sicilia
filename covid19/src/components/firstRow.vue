@@ -5,7 +5,7 @@
       <div class="title">Dati per Regione</div>
     </div>
     <b-row>
-      <b-col class="widgetContainer" lg="3" md="6" sm="6" cols="6">
+      <b-col class="widgetContainer" lg="3" md="3" sm="6" cols="6">
         <div class="iconContainer">
           <img class="icons" src="../assets/icons/01.svg"
           alt="Icona che raffigura una persona che tossisce">
@@ -13,7 +13,7 @@
         <div class="title">Ricoverati con Sintomi</div>
         <div class="value">{{ ricoverati }}</div>
       </b-col>
-      <b-col class="widgetContainer" lg="3" md="6" sm="6" cols="6">
+      <b-col class="widgetContainer" lg="3" md="3" sm="6" cols="6">
         <div class="iconContainer">
           <img class="icons" src="../assets/icons/02.svg"
           alt="Icona che raffigura dei polmoni">
@@ -21,7 +21,7 @@
         <div class="title">Terapia Intensiva</div>
         <div class="value">{{ terapia }}</div>
       </b-col>
-      <b-col class="widgetContainer" lg="3" md="6" sm="6" cols="6">
+      <b-col class="widgetContainer" lg="3" md="3" sm="6" cols="6">
         <div class="iconContainer">
           <img class="icons" src="../assets/icons/03.svg"
           alt="Icona che raffigura un ospedale">
@@ -29,7 +29,7 @@
         <div class="title">Totale Ospedalizzati</div>
         <div class="value">{{ ospedalizzati }}</div>
       </b-col>
-      <b-col class="widgetContainer" lg="3" md="6" sm="6" cols="6">
+      <b-col class="widgetContainer" lg="3" md="3" sm="6" cols="6">
         <div class="iconContainer">
           <img class="icons" src="../assets/icons/04.svg"
           alt="Icona che raffigura un paziente con una mascherina">
@@ -82,15 +82,15 @@ export default {
       .icons{
         // background-color: red;
         width: auto;
-        height: 120px;
+        height: 100px;
       }
       .title{
-        font-size: 1.2em;
+        font-size: 1em;
         text-align: center;
         font-family: 'Raleway', sans-serif;
       }
       .value{
-        font-size: 3em;
+        font-size: 2em;
         text-align: center;
       }
     }

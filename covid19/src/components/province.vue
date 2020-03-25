@@ -65,12 +65,12 @@ export default {
         height: 60px;
       }
       .title{
-        font-size: 1.2em;
+        font-size: 1em;
         text-align: center;
         font-family: 'Raleway', sans-serif;
       }
       .value{
-        font-size: 3em;
+        font-size: 2em;
         text-align: center;
       }
     }

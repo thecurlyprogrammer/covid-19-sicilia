@@ -22,11 +22,6 @@
       <province
         :province = "provinceTotale"
       />
-      <div class="amazon">
-        <div class="amazonProduct">
-          <iframe src="https://rcm-eu.amazon-adsystem.com/e/cm?o=29&p=42&l=ur1&category=primestudent_it&banner=1RJANB9APZJXG4CVF502&f=ifr&linkID=20896c5c5f2b563627801169d39f70be&t=sandrogreco0a-21&tracking_id=sandrogreco0a-21" width="234" height="60" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
-        </div>
-      </div>
       <nazione
         :ricoverati = "nazione.ricoveratiSintomi"
         :terapia = "nazione.terapiaIntensiva"
@@ -63,11 +58,6 @@
             </b-link>
           </b-list-group-item>
         </b-list-group>
-      </div>
-      <div class="amazon">
-        <div class="amazonProduct">
-          <iframe src="https://rcm-eu.amazon-adsystem.com/e/cm?o=29&p=22&l=ur1&category=amu&banner=0JH87N0A0VRN7NCWZVR2&f=ifr&linkID=68f69324d3743e678a1d8b6c8991252c&t=sandrogreco0a-21&tracking_id=sandrogreco0a-21" width="250" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
-        </div>
       </div>
     </b-container>
   </div>
@@ -171,8 +161,8 @@ export default {
               this.sicilia.terapiaIntensiva = res.data[i].terapia_intensiva;
               this.sicilia.totaleOspedalizzati = res.data[i].totale_ospedalizzati;
               this.sicilia.isolamentoDomiciliare = res.data[i].isolamento_domiciliare;
-              this.sicilia.totalePositivi = res.data[i].totale_attualmente_positivi;
-              this.sicilia.nuoviPositivi = res.data[i].nuovi_attualmente_positivi;
+              this.sicilia.totalePositivi = res.data[i].totale_positivi;
+              this.sicilia.nuoviPositivi = res.data[i].nuovi_positivi;
               this.sicilia.dimessiGuariti = res.data[i].dimessi_guariti;
               this.sicilia.deceduti = res.data[i].deceduti;
               this.sicilia.totaleCasi = res.data[i].totale_casi;
@@ -218,8 +208,8 @@ export default {
           this.nazione.terapiaIntensiva = res.data[0].terapia_intensiva;
           this.nazione.totaleOspedalizzati = res.data[0].totale_ospedalizzati;
           this.nazione.isolamentoDomiciliare = res.data[0].isolamento_domiciliare;
-          this.nazione.totalePositivi = res.data[0].totale_attualmente_positivi;
-          this.nazione.nuoviPositivi = res.data[0].nuovi_attualmente_positivi;
+          this.nazione.totalePositivi = res.data[0].totale_positivi;
+          this.nazione.nuoviPositivi = res.data[0].nuovi_positivi;
           this.nazione.dimessiGuariti = res.data[0].dimessi_guariti;
           this.nazione.deceduti = res.data[0].deceduti;
           this.nazione.totaleCasi = res.data[0].totale_casi;

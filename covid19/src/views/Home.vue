@@ -22,6 +22,18 @@
       <province
         :province = "provinceTotale"
       />
+      <hr>
+      <div class="chartContainer" id="grafico1">
+        <div class="chart">Grafico 1</div>
+        <dir class="chartSubtitle">Rappresenta i casi totali</dir>
+      <D3LineChart :config="chart1_config" :datum="grafico.casiTotali"></D3LineChart>
+      </div>
+      <div class="chartContainer" id="grafico2">
+        <div class="chart">Grafico 2</div>
+        <div class="chartSubtitle">Rappresenta i <span class="green">dimessi guariti</span>
+        e i <span class="red">deceduti</span></div>
+      <D3LineChart :config="chart2_config" :datum="grafico.casiTotali"></D3LineChart>
+      </div>
       <nazione
         :ricoverati = "nazione.ricoveratiSintomi"
         :terapia = "nazione.terapiaIntensiva"
@@ -69,11 +81,55 @@ import firstRow from '@/components/firstRow.vue';
 import secondRow from '@/components/secondRow.vue';
 import province from '@/components/province.vue';
 import nazione from '@/components/nazione.vue';
+import { D3LineChart } from 'vue-d3-charts';
 
 export default {
   name: 'Home',
   data() {
     return {
+      chart1_config: {
+        values: ['casiTotali'],
+        date: {
+          key: 'dataCasi',
+          inputFormat: '%d',
+          outputFormat: '%d',
+        },
+        points: {
+          visibleSize: 3,
+          hoverSize: 6,
+        },
+        axis: {
+          yTitle: 'Casi Totali',
+          yTicks: 6,
+          xTicks: 0,
+        },
+      },
+      chart2_config: {
+        values: ['dimessiGuariti', 'deceduti'],
+        date: {
+          key: 'dataCasi',
+          inputFormat: '%d',
+          outputFormat: '%d',
+        },
+        points: {
+          visibleSize: 3,
+          hoverSize: 6,
+        },
+        axis: {
+          yTitle: ['Dimessi Guariti - Deceduti'],
+          yTicks: 6,
+          xTicks: 0,
+        },
+        color: {
+          scheme: ['#339900', '#cc3300'],
+        },
+        tooltip: {
+          labels: ['Dimessi Guariti', 'Deceduti'],
+        },
+      },
+      grafico: {
+        casiTotali: [],
+      },
       sicilia: {
         regione: 'Sicilia',
         data: '00-00-2020',
@@ -132,6 +188,7 @@ export default {
     secondRow,
     province,
     nazione,
+    D3LineChart,
   },
   methods: {
     convertData(oldData) {
@@ -221,11 +278,39 @@ export default {
           console.error(error);
         });
     },
+    getStorico() {
+      const path = 'https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-regioni.json';
+      axios.get(path)
+        .then((res) => {
+          const result = res.data;
+          const lunghezza = result.length;
+          let i = 0;
+          let j = 0;
+          while (i < lunghezza) {
+            if (result[i].codice_regione === 19) {
+              const [casiTotali, dimessiGuariti, deceduti, dataCasi] = [
+                result[i].totale_casi, result[i].dimessi_guariti, result[i].deceduti, j,
+              ];
+              this.grafico.casiTotali.push({
+                casiTotali, dimessiGuariti, deceduti, dataCasi,
+              });
+              j += 1;
+            }
+            i += 1;
+          }
+          // console.log(this.grafico.casiTotali);
+        })
+        .catch((error) => {
+          // eslint-disable-next-line
+          console.error(error);
+        });
+    },
   },
   created() {
     this.getRegione();
     this.getProvince();
     this.getNazione();
+    this.getStorico();
   },
 };
 </script>
@@ -287,6 +372,28 @@ export default {
         margin-top: 16px;
         text-align: center;
         font-family: 'Raleway', sans-serif;
+      }
+    }
+    .chartContainer{
+      .chart{
+        font-size: 2.5em;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 300;
+        text-align: center;
+        padding: 8px 0px;
+      }
+      .chartSubtitle{
+        font-size: 1em;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 300;
+        text-align: center;
+        padding: 8px 0px;
+      }
+      .green{
+        color: green;
+      }
+      .red{
+        color: red;
       }
     }
     .rivolgersiContainer{

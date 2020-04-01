@@ -25,13 +25,13 @@
       <hr>
       <div class="chartContainer" id="grafico1">
         <div class="chart">Grafico 1</div>
-        <dir class="chartSubtitle">Rappresenta i casi totali</dir>
+        <dir class="chartSubtitle">Rappresenta i casi totali per la regione Sicilia</dir>
       <D3LineChart :config="chart1_config" :datum="grafico.casiTotali"></D3LineChart>
       </div>
       <div class="chartContainer" id="grafico2">
         <div class="chart">Grafico 2</div>
         <div class="chartSubtitle">Rappresenta i <span class="green">dimessi guariti</span>
-        e i <span class="red">deceduti</span></div>
+        e i <span class="red">deceduti</span> per la regione Sicilia</div>
       <D3LineChart :config="chart2_config" :datum="grafico.casiTotali"></D3LineChart>
       </div>
       <nazione

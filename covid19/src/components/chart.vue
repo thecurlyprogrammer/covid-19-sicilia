@@ -1,5 +1,17 @@
 <template>
-  <D3LineChart :config="chart_config" :datum="chart_data"></D3LineChart>
+  <div>
+    <div class="chartContainer" id="grafico1">
+      <div class="chart">Grafico 1</div>
+      <dir class="chartSubtitle">Rappresenta i casi totali per la regione Sicilia</dir>
+      <D3LineChart :config="chart1_config" :datum="casiTotali"></D3LineChart>
+    </div>
+    <div class="chartContainer" id="grafico2">
+      <div class="chart">Grafico 2</div>
+      <div class="chartSubtitle">Rappresenta i <span class="green">dimessi guariti</span>
+      e i <span class="red">deceduti</span> per la regione Sicilia</div>
+      <D3LineChart :config="chart2_config" :datum="casiTotali"></D3LineChart>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -10,28 +22,44 @@ export default {
   data() {
     return {
       casi_totali: [],
-      chart_data: [
-        { hours: 238, production: 134, date: 2000 },
-        { hours: 938, production: 478, date: 2001 },
-        { hours: 1832, production: 1392, date: 2002 },
-        { hours: 2092, production: 2343, date: 2003 },
-        { hours: 2847, production: 2346, date: 2004 },
-        { hours: 2576, production: 2233, date: 2005 },
-        { hours: 2524, production: 2325, date: 2006 },
-        { hours: 1648, production: 2456, date: 2007 },
-        { hours: 2479, production: 2329, date: 2008 },
-        { hours: 3200, production: 2438, date: 2009 },
-      ],
-      chart_config: {
-        values: ['hours', 'production'],
+      chart1_config: {
+        values: ['casiTotali'],
         date: {
-          key: 'data',
-          inputFormat: '%Y',
-          outputFormat: '%Y',
+          key: 'dataCasi',
+          inputFormat: '%d',
+          outputFormat: '%d',
         },
-        points: false,
+        points: {
+          visibleSize: 3,
+          hoverSize: 6,
+        },
         axis: {
-          yTicks: 5,
+          yTitle: 'Casi Totali',
+          yTicks: 6,
+          xTicks: 0,
+        },
+      },
+      chart2_config: {
+        values: ['dimessiGuariti', 'deceduti'],
+        date: {
+          key: 'dataCasi',
+          inputFormat: '%d',
+          outputFormat: '%d',
+        },
+        points: {
+          visibleSize: 3,
+          hoverSize: 6,
+        },
+        axis: {
+          yTitle: ['Dimessi Guariti - Deceduti'],
+          yTicks: 6,
+          xTicks: 0,
+        },
+        color: {
+          scheme: ['#339900', '#cc3300'],
+        },
+        tooltip: {
+          labels: ['Dimessi Guariti', 'Deceduti'],
         },
       },
     };
@@ -41,7 +69,31 @@ export default {
   },
   mounted() {
     this.casi_totali = this.casiTotali;
-    console.log(this.casi_totali);
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.chartContainer{
+  .chart{
+    font-size: 2.5em;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    text-align: center;
+    padding: 8px 0px;
+  }
+  .chartSubtitle{
+    font-size: 1em;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    text-align: center;
+    padding: 8px 0px;
+  }
+  .green{
+    color: green;
+  }
+  .red{
+    color: red;
+  }
+}
+</style>

@@ -76,7 +76,7 @@ export default new Vuex.Store({
         .then((r) => r.data)
         .then((nazione) => {
           commit('setNazione', nazione);
-          console.log(nazione);
+          // console.log(nazione);
         });
     },
   },

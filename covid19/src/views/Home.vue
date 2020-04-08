@@ -1,7 +1,7 @@
 <template>
   <div class="main" id="bollettino">
     <div class="head">
-      <div class="title">Coronavirus in {{ getRegione.denominazione_getRegione }}</div>
+      <div class="title">Coronavirus in {{ getRegione.denominazione_regione }}</div>
       <div class="data">Bollettino aggiornato in data: {{ convertData(getRegione.data) }}</div>
     </div>
     <b-container>

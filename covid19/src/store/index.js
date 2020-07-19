@@ -21,7 +21,7 @@ export default new Vuex.Store({
         tamponi: '0',
       },
     ],
-    province: [9],
+    province: [11],
     nazione: [
       {
         stato: 'Italia',

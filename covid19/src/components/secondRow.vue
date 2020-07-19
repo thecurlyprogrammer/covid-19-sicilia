@@ -31,7 +31,7 @@
       </b-col>
       <b-col class="widgetContainer" lg="4" md="4" sm="6" cols="6">
         <div class="iconContainer">
-          <img class="icons" src="../assets/icons/10.svg"
+          <img class="icons" src="../assets/icons/010.svg"
           alt="Icona che raffigura un cardiografo">
         </div>
         <div class="title">Totale Pazienti Deceduti</div>
